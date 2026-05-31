@@ -5,12 +5,17 @@ import { persist, createJSONStorage } from "zustand/middleware"
 import { getStorage } from "@/store/storage"
 import type { ConfiguratorState } from "@/types/configurator"
 
-type ConfiguratorStore = ConfiguratorState & {
-  setField: <K extends keyof ConfiguratorState>(key: K, value: ConfiguratorState[K]) => void
+type ConfiguratorFields = ConfiguratorState
+
+type ConfiguratorStore = ConfiguratorFields & {
+  setField: <K extends keyof ConfiguratorFields>(
+    key: K,
+    value: ConfiguratorFields[K]
+  ) => void
   reset: () => void
 }
 
-export const defaultConfiguratorState: ConfiguratorState = {
+export const defaultConfiguratorState: ConfiguratorFields = {
   subtype: "Impression",
   area: "binnen",
   placement: "op_vloer",
@@ -33,8 +38,12 @@ export const useConfiguratorStore = create<ConfiguratorStore>()(
   persist(
     (set) => ({
       ...defaultConfiguratorState,
-      setField: (key, value) => set({ [key]: value } as Pick<ConfiguratorState, keyof ConfiguratorState>),
-      reset: () => set(defaultConfiguratorState),
+      setField: (key, value) =>
+        set((state) => ({
+          ...state,
+          [key]: value,
+        })),
+      reset: () => set(() => ({ ...defaultConfiguratorState })),
     }),
     {
       name: "carpetz-configurator",
