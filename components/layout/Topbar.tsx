@@ -5,7 +5,6 @@ const links = [
   { href: "/reviews", label: "Reviews" },
   { href: "/over-ons", label: "Over ons" },
   { href: "/contact", label: "Contact" },
-  { href: "/reseller-worden", label: "Reseller worden" },
 ]
 
 export function Topbar() {
@@ -14,7 +13,9 @@ export function Topbar() {
       <div className="container topbar-inner">
         <div className="topbar-links">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>{link.label}</Link>
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
           ))}
         </div>
         <div className="topbar-help">Hulp nodig? Bel 0488253932</div>
