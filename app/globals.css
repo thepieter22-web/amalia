@@ -63,12 +63,21 @@ textarea { min-height: 120px; resize: vertical; }
   color: white;
   padding: 18px 0 14px;
 }
-.site-header-inner {
+
+.site-header-inner-simple {
   display: grid;
-  grid-template-columns: 260px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 24px;
   align-items: center;
 }
+
+.site-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
 .brand {
   display: flex;
   align-items: center;
