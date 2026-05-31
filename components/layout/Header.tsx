@@ -7,7 +7,7 @@ export function Header() {
     <header className="site-header">
       <div className="container site-header-inner site-header-inner-simple">
         <Link href="/" className="brand">
-          <Image src="/logo.png" alt="Carpetz logo" width={92} height={92} priority />
+          <Image src="/logo.svg" alt="Carpetz logo" width={92} height={92} priority />
           <div className="brand-copy">
             <strong>Carpetz</strong>
             <span>Logomatten op maat</span>
